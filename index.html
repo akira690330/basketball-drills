@@ -13,6 +13,12 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<noscript>
+  <div style="padding: 40px 20px; text-align: center; font-family: sans-serif; color: #17140F;">
+    這個網頁需要開啟 JavaScript 才能運作。<br>
+    如果你是從 LINE、Messenger 等 App 裡點連結進來的，請點右上角「⋯」或分享圖示，選「用瀏覽器開啟」，改用 Safari 或 Chrome 開啟這個連結。
+  </div>
+</noscript>
 <div class="app">
 
   <header class="app-header">
@@ -39,7 +45,9 @@
 
   <div class="segmented-wrap segmented-wrap--sub" id="subWrap"></div>
 
-  <main class="card-list" id="cardList"></main>
+  <main class="card-list" id="cardList">
+    <div class="empty-state">載入中…</div>
+  </main>
 
   <div class="toast hidden" id="toast">
     <span class="toast__text"></span>
