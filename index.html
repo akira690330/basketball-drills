@@ -100,7 +100,7 @@
 <div class="modal-backdrop hidden" id="exportModalBackdrop">
   <div class="modal">
     <h2>複製這筆資料</h2>
-    <p class="modal__hint">貼到 <code id="exportTargetFile"></code>，加在陣列最後一筆項目後面（記得補上前面那筆的逗號）</p>
+    <p class="modal__hint">自動同步失敗了，改手動貼：貼到 <code id="exportTargetFile"></code> 檔案最開頭 <code>[</code> 的正後面即可，不用管後面內容的逗號</p>
     <textarea id="exportJsonText" class="modal__code" rows="10" readonly></textarea>
     <div class="modal__actions">
       <button type="button" class="modal__cancel" id="exportCloseBtn">關閉</button>
@@ -112,7 +112,7 @@
 <div class="modal-backdrop hidden" id="syncModalBackdrop">
   <div class="modal">
     <h2>尚未同步的影片</h2>
-    <p class="modal__hint">這些是曾經在這台裝置上用「新增影片」加過、但還沒貼回 GitHub 的內容。依目標檔案分組，複製後貼到對應的 <code>data/*.json</code>，加在陣列最後一筆項目後面（記得補上前面那筆的逗號），再 commit、push。</p>
+    <p class="modal__hint">這些是曾經在這台裝置上用「新增影片」加過、但還沒同步的內容（自動同步失敗時的備援）。依目標檔案分組，複製後貼到對應 <code>data/*.json</code> 檔案最開頭 <code>[</code> 的正後面即可，不用管後面內容的逗號，再 commit、push。</p>
     <div id="syncGroups"></div>
     <div class="modal__actions">
       <button type="button" class="modal__cancel" id="syncCloseBtn">關閉</button>
@@ -123,6 +123,7 @@
 <script src="owner.js"></script>
 <script src="app.js"></script>
 <script src="add-video.js"></script>
+<script src="github-sync.js"></script>
 <script src="owner-export.js"></script>
 <script src="owner-sync.js"></script>
 <script src="sw-register.js"></script>

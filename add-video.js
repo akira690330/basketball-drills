@@ -1,4 +1,4 @@
-const FACEBOOK_TITLE_PROXY_URL = 'https://basketball-fb-title-proxy.akira690330.workers.dev';
+const WORKER_BASE_URL = 'https://basketball-fb-title-proxy.akira690330.workers.dev';
 
 const addModalBackdrop = document.getElementById('addModalBackdrop');
 const addForm = document.getElementById('addForm');
@@ -69,9 +69,9 @@ async function tryAutofillFromYoutube(url) {
 
 async function tryAutofillFromFacebook(url) {
   if (detectPlatform(url) !== 'Facebook') return;
-  if (FACEBOOK_TITLE_PROXY_URL.indexOf('REPLACE_ME') === 0) return;
+  if (WORKER_BASE_URL.indexOf('REPLACE_ME') === 0) return;
   try {
-    const proxyUrl = FACEBOOK_TITLE_PROXY_URL + '?url=' + encodeURIComponent(url);
+    const proxyUrl = WORKER_BASE_URL + '?url=' + encodeURIComponent(url);
     const res = await fetch(proxyUrl);
     if (!res.ok) return;
     const data = await res.json();
@@ -115,7 +115,7 @@ addModalBackdrop.addEventListener('click', (event) => {
   if (event.target === addModalBackdrop) closeAddModal();
 });
 
-addForm.addEventListener('submit', (event) => {
+addForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const video = buildCustomVideo(new FormData(addForm));
   state.customVideos.push(video);
@@ -124,9 +124,16 @@ addForm.addEventListener('submit', (event) => {
   state.category = video.category;
   state.sub = null;
   render();
-  if (isOwner()) {
-    showExportPanel(video);
-  } else {
+
+  if (!isOwner()) {
     showToast('已儲存到本機（僅你看得到）', 3000);
+    return;
+  }
+
+  const synced = await trySyncToGitHub(video);
+  if (synced) {
+    showToast('已自動同步到共用資料庫，約 1 分鐘後大家都看得到', 3500);
+  } else {
+    showExportPanel(video);
   }
 });

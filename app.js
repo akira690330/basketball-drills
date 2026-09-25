@@ -43,12 +43,22 @@ function saveJSON(key, value) {
   }
 }
 
+function cleanupSyncedCustomVideos(masterList) {
+  const masterIds = new Set(masterList.map((v) => v.id));
+  const before = state.customVideos.length;
+  state.customVideos = state.customVideos.filter((v) => !masterIds.has(v.id));
+  if (state.customVideos.length !== before) {
+    saveJSON(CUSTOM_VIDEOS_KEY, state.customVideos);
+  }
+}
+
 async function fetchCategoryVideos(category) {
   if (state.dataCache[category]) return state.dataCache[category];
   const res = await fetch(CATEGORY_FILES[category]);
   if (!res.ok) throw new Error('載入分類資料失敗：' + category);
   const list = await res.json();
   state.dataCache[category] = list;
+  cleanupSyncedCustomVideos(list);
   return list;
 }
 

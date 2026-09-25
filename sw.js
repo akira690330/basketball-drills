@@ -1,6 +1,6 @@
 // 每次修改 SHELL_ASSETS 裡任何一個檔案的內容時，一定要把這個版號往上加，
 // 否則已經造訪過的使用者會因為 cache-first 策略永遠讀到舊版本。
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const SHELL_CACHE = 'bb-shell-' + CACHE_VERSION;
 const DATA_CACHE = 'bb-data-' + CACHE_VERSION;
 
@@ -13,6 +13,7 @@ const SHELL_ASSETS = [
   './owner.js',
   './owner-export.js',
   './owner-sync.js',
+  './github-sync.js',
   './sw-register.js',
   './manifest.json',
   './icons/icon-192.png',
