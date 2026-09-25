@@ -1,5 +1,17 @@
 [
   {
+    "id": "custom_test_worker_write",
+    "title": "TEST_WORKER_WRITE_請忽略稍後會刪除",
+    "category": "進攻",
+    "subCategory": "擺脫緊逼",
+    "platform": "YouTube",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "thumbnail": "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+    "note": "",
+    "favorite": false
+  },
+  {
     "id": "a1",
     "title": "插步變向破解貼身防守",
     "category": "進攻",
