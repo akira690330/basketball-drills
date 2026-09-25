@@ -20,3 +20,6 @@ function isOwner() {
     return false;
   }
 }
+
+const syncBtnEl = document.getElementById('syncBtn');
+if (syncBtnEl) syncBtnEl.classList.toggle('hidden', !isOwner());
