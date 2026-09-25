@@ -1,0 +1,38 @@
+[
+  {
+    "id": "a1",
+    "title": "插步變向破解貼身防守",
+    "category": "進攻",
+    "subCategory": "擺脫緊逼",
+    "platform": "YouTube",
+    "url": "https://www.youtube.com/shorts/REPLACE_ME_1",
+    "embedUrl": "https://www.youtube.com/embed/REPLACE_ME_1",
+    "thumbnail": "",
+    "note": "第一步插步壓低重心，側肩頂開",
+    "favorite": true
+  },
+  {
+    "id": "a2",
+    "title": "運球過人基本步法",
+    "category": "進攻",
+    "subCategory": "運球過人",
+    "platform": "YouTube",
+    "url": "https://www.youtube.com/shorts/REPLACE_ME_2",
+    "embedUrl": "https://www.youtube.com/embed/REPLACE_ME_2",
+    "thumbnail": "",
+    "note": "",
+    "favorite": false
+  },
+  {
+    "id": "a3",
+    "title": "背框轉身跳投",
+    "category": "進攻",
+    "subCategory": "單打投籃",
+    "platform": "Facebook",
+    "url": "https://www.facebook.com/reel/REPLACE_ME_3",
+    "embedUrl": "",
+    "thumbnail": "",
+    "note": "背框先卡位再轉身",
+    "favorite": false
+  }
+]

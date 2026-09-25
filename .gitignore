@@ -1,0 +1,4 @@
+.DS_Store
+.gstack/
+cloudflare-worker/.wrangler/
+cloudflare-worker/node_modules/

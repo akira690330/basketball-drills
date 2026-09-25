@@ -1,0 +1,6 @@
+name = "basketball-fb-title-proxy"
+main = "facebook-title-proxy.js"
+compatibility_date = "2025-01-01"
+
+[observability]
+enabled = true
