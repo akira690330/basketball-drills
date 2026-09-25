@@ -84,8 +84,22 @@
   </div>
 </div>
 
+<div class="modal-backdrop hidden" id="exportModalBackdrop">
+  <div class="modal">
+    <h2>複製這筆資料</h2>
+    <p class="modal__hint">貼到 <code id="exportTargetFile"></code>，加在陣列最後一筆項目後面（記得補上前面那筆的逗號）</p>
+    <textarea id="exportJsonText" class="modal__code" rows="10" readonly></textarea>
+    <div class="modal__actions">
+      <button type="button" class="modal__cancel" id="exportCloseBtn">關閉</button>
+      <button type="button" class="modal__submit" id="exportCopyBtn">複製 JSON</button>
+    </div>
+  </div>
+</div>
+
+<script src="owner.js"></script>
 <script src="app.js"></script>
 <script src="add-video.js"></script>
+<script src="owner-export.js"></script>
 <script src="sw-register.js"></script>
 </body>
 </html>

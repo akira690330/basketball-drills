@@ -278,3 +278,16 @@ button { font-family: inherit; }
 }
 .modal__cancel { background: #F2F0EA; color: var(--ink); }
 .modal__submit { background: var(--accent); color: #fff; }
+.modal__hint {
+  margin: 0 0 12px; font-size: 13px; color: var(--sub-ink); line-height: 1.6;
+}
+.modal__hint code {
+  background: #F2F0EA; color: var(--ink); padding: 2px 6px; border-radius: 6px;
+  font-size: 12px; font-family: ui-monospace, monospace;
+}
+.modal__code {
+  width: 100%; box-sizing: border-box; padding: 12px;
+  border-radius: 12px; border: 1px solid #E7E2D9; background: #FAFAF8;
+  font-family: ui-monospace, monospace; font-size: 12px; line-height: 1.5;
+  color: var(--ink); resize: vertical;
+}

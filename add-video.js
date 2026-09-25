@@ -124,5 +124,9 @@ addForm.addEventListener('submit', (event) => {
   state.category = video.category;
   state.sub = null;
   render();
-  showToast('已儲存到本機，之後可匯出併入 data.json', 3000);
+  if (isOwner()) {
+    showExportPanel(video);
+  } else {
+    showToast('已儲存到本機（僅你看得到）', 3000);
+  }
 });
