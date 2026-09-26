@@ -23,6 +23,7 @@ const state = {
   customVideos: loadJSON(CUSTOM_VIDEOS_KEY, []),
   hidden: loadJSON(HIDDEN_KEY, {}),
   dataCache: {},
+  failedCategories: [],
   toastTimer: null
 };
 
@@ -64,9 +65,23 @@ async function fetchCategoryVideos(category) {
 
 async function fetchAllVideos() {
   if (state.dataCache['全部']) return state.dataCache['全部'];
-  const lists = await Promise.all(Object.keys(CATEGORY_FILES).map(fetchCategoryVideos));
-  const merged = lists.flat();
+  const categories = Object.keys(CATEGORY_FILES);
+  const results = await Promise.allSettled(categories.map(fetchCategoryVideos));
+
+  const merged = [];
+  const failed = [];
+  results.forEach((result, index) => {
+    if (result.status === 'fulfilled') {
+      merged.push(...result.value);
+    } else {
+      failed.push(categories[index]);
+    }
+  });
+
+  // 用 allSettled 而不是 all：單一分類的資料檔案壞掉時，
+  // 其他分類還是要能正常顯示，不能整個 App 一起掛掉。
   state.dataCache['全部'] = merged;
+  state.failedCategories = failed;
   return merged;
 }
 
@@ -277,12 +292,23 @@ async function renderCards() {
     return;
   }
 
-  if (videos.length === 0) {
-    renderMessage('此分類尚無影片');
-    return;
-  }
   const list = document.getElementById('cardList');
   list.innerHTML = '';
+
+  if (state.category === '全部' && state.failedCategories.length > 0) {
+    const warning = document.createElement('div');
+    warning.className = 'empty-state';
+    warning.textContent = state.failedCategories.join('、') + ' 資料格式錯誤，暫時無法顯示，其他分類不受影響';
+    list.appendChild(warning);
+  }
+
+  if (videos.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'empty-state';
+    empty.textContent = '此分類尚無影片';
+    list.appendChild(empty);
+    return;
+  }
   videos.forEach((video, index) => list.appendChild(buildCardEl(video, index)));
 }
 
